@@ -2,6 +2,13 @@ var express = require('express');
 var app = express();
 var port = 3000;
 
+var users=[
+            { id: 1, name: "Wing" },
+            { id: 2, name: "Hong 10" },
+            { id: 3, name: "Victor" },
+            { id: 4, name: "Skim" }
+        ];
+
 app.set("view engine", 'pug');
 app.set("views", "./views");
 app.get('', function(req, res) {
@@ -16,12 +23,7 @@ app.get('/header', function(req, res) {
 
 app.get('/users', function(req, res) {
     res.render('users/index.pug', {
-        names: [
-            { id: 1, name: "Wing" },
-            { id: 2, name: "Hong 10" },
-            { id: 3, name: "Victor" },
-            { id: 4, name: "Skim" }
-        ]
+        users: users
     })
 });
 
