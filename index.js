@@ -2,12 +2,17 @@ var express = require('express');
 var app = express();
 var port = 3000;
 var bodyParser=require('body-parser');
-var users=[
-            { id: 1, name: "Wing" },
-            { id: 2, name: "Hong 10" },
-            { id: 3, name: "Victor" },
-            { id: 4, name: "Skim" }
-        ];
+
+var low = require('lowdb')
+var FileSync = require('lowdb/adapters/FileSync')
+
+var adapter = new FileSync('db.json')
+var db = low(adapter)
+
+var shortid=require("shortid");
+
+db.defaults({users:[]}).write();
+var users=db.get('users').value();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -35,23 +40,26 @@ app.get('/users/search',function(req,res){
 	var userMatchs=users.filter(function(user){
 		return user.name.toLowerCase().indexOf(q.toLowerCase())>=0;
 	});
-	console.log(userMatchs);
 	res.render('users/index.pug',{
 		users:userMatchs
 	});
 });
 
 app.get('/users/create',function(req,res){
-	res.render('users/create',{
-
-	});
-})
+	res.render('users/create');
+});
 
 app.post('/users/create',function(req,res){
-	var id_next=users.length+1;
-	console.log(id_next);
-	users.push({id:id_next,name:req.body.name});
+	db.get('users').push({id:shortid.generate(),name:req.body.name}).write();
+	users=db.get("users").value();
 	res.redirect('/users');
+})
+
+app.get('/view/:id',function(req,res){
+	var id=req.params.id;
+	var user=db.get('users').find({id:id}).value();
+	console.log(user);
+	res.render("../view",{user:user});
 })
 
 app.listen(port, function() {

@@ -3,5 +3,7 @@ form(action="/users/search" method="GET")
 	input(type="text" name="q")
 	button Search
 ul
-	each val in users
-		li= val.id +": "+val.name
+	each val,index in users
+		li= index +": "+val.name
+		span &nbsp
+		a(href="/view/"+val.id) View
