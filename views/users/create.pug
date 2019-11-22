@@ -3,5 +3,11 @@ extends ../../public/common.pug
 block bootstrap
 	h1 Create User
 	form(action="/users/create" method="POST")
-		input(type="text" name="name")
-		button Create
+		label Name:
+		input.form-control(type="text" name="name")
+		br
+		label Phone:
+		input.form-control(type="text" name="phone")
+		br
+		button(class="ml-3 btn btn-primary") Create
+	

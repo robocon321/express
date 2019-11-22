@@ -16,15 +16,7 @@ module.exports.search=function(req,res){
 		users:userMatchs
 	});
 };
-module.exports.header=function(req,res){
-	var q=req.query.q;
-	var userMatchs=users.filter(function(user){
-		return user.name.toLowerCase().indexOf(q.toLowerCase())>=0;
-	});
-	res.render('users/index.pug',{
-		users:userMatchs
-	});
-};
+
 module.exports.create_get=function(req,res){
 	res.render('users/create');
 };
