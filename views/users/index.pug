@@ -1,9 +1,12 @@
-a(href="/users/create") New
-form(action="/users/search" method="GET")
-	input(type="text" name="q")
-	button Search
-ul
-	each val,index in users
-		li= index +": "+val.name
-		span &nbsp
-		a(href="/view/"+val.id) View
+extends ../../public/common.pug
+
+block bootstrap
+	a(href="/users/create") New
+	form(action="/users/search" method="GET")
+		input(type="text" name="q")
+		button Search
+	ul
+		each val,index in users
+			li= index +": "+val.name
+			span &nbsp
+			a(href="/view/"+val.id) View
