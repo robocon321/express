@@ -3,7 +3,6 @@ var users=db.get('users').value();
 var shortid=require("shortid");
 
 module.exports.index=function(req, res) {
-	console.log(req.cookies.name);
     res.render('users/index.pug', {
         users: users
     })
