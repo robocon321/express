@@ -3,10 +3,17 @@ extends ../../public/common.pug
 block bootstrap
 	a(href="/users/create") New
 	form(action="/users/search" method="GET")
-		input(type="text" name="q")
-		button Search
-	ul
-		each val,index in users
-			li= index +": "+val.name
-			span &nbsp
-			a(href="/view/"+val.id) View
+		input.form-control(type="text" name="q")
+		button.btn(style="background-color:#1BD1FF") Search
+	table.table
+		tr
+			th Name
+			th Phone
+			th Action
+
+		each val in users
+			tr
+				td= val.name
+				td= val.phone
+				td
+					a.btn.btn-primary(href="/view/"+val.id) View
