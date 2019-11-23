@@ -3,10 +3,12 @@ var users=db.get('users').value();
 var shortid=require("shortid");
 
 module.exports.index=function(req, res) {
+	console.log(req.cookies.name);
     res.render('users/index.pug', {
         users: users
     })
 };
+
 module.exports.search=function(req,res){
 	var q=req.query.q;
 	var userMatchs=users.filter(function(user){
