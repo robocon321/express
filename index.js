@@ -8,8 +8,9 @@ var db=require("./db.js");
 var controllers=require("./controllers/controllers.js");
 var auth=require('./routes/auth.js');
 var login=require("./controllers/login.js");
+var dotenv=require('dotenv').config();
 
-app.use(cookieParser());
+app.use(cookieParser(process.env.DB_PASS));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use('/users',userRoute);
@@ -32,5 +33,3 @@ app.get('/view/:id', login.getLogin, function(req,res){
 app.listen(port, function() {
     console.log("My port have just been opened success...");
 });
-
-module.exports = app;

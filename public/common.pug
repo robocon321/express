@@ -4,11 +4,14 @@ html
 	body
 		ul.nav(style="background-color:#FFF7B7")
 			li.nav-item
-				a.btn-dark.btn(style="color:white") Welcome to R#
+				a.nav-link(href="/") Welcome to R#
 			li.nav-item
 				a.nav-link(href='/') Home
 			li.nav-item
 				a.nav-link(href='/users') Users
 			li.nav-item
 				a.nav-link(href='/users/create') Add user
+			li.nav-item
+				if name
+					p.btn.btn-primary(style="position:absolute;right:0px;width:100px")= name
 		block bootstrap
