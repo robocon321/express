@@ -1,0 +1,54 @@
+extends ../public/common.pug
+
+block bootstrap
+	.container
+		.row
+			.col-sm-4.offset-sm-5
+				h1= "Page :"+page
+	.container
+		.row
+			each val,index in products
+				.col-sm-3.mb-2.mt-2
+					.card(style='width: 100%;')
+						img.card-img-top(src=val.image, alt='No find image')
+						.card-body
+							h5.card-title= (page-1)*20+index+1+". "+val.name
+							p.card-text= val.description
+							a.btn.btn-primary(href='#') Add to cart
+	.container
+		.row
+			.col.offset-sm-4
+				nav
+					ul.pagination
+						if page >=2 && page <=4
+							li.page-item
+								a.page-link(href='/product?page=' + (page*1-1)) Previous
+							li.page-item
+								a.page-link(href='/product?page=' + (page*1-1))= page*1-1
+							li.page-item
+								a.page-link(href='/product?page=' + (page*1))= page*1
+							li.page-item
+								a.page-link(href='/product?page=' + (page*1+1))= page*1+1
+							li.page-item
+								a.page-link(href='/product?page=' + (page*1+1)) Next
+						if page ==1
+							li.page-item
+								a.page-link(href='/product?page=' + (page*1))= page*1
+							li.page-item
+								a.page-link(href='/product?page=' + (page*1+1))= page*1+1
+							li.page-item
+								a.page-link(href='/product?page=' + (page*1+1)) Next
+						if page == 5
+							li.page-item
+								a.page-link(href='/product?page=' + (page*1-1)) Previous
+							li.page-item
+								a.page-link(href='/product?page=' + (page*1-1))= page*1-1
+							li.page-item
+								a.page-link(href='/product?page=' + (page*1))= page*1
+						if page < 1
+							li.page-item
+								a.page-link(href='/product?page=1') Next
+						if page > 5
+							li.page-item
+								a.page-link(href='/product?page=4') Previous
+
