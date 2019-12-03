@@ -7,8 +7,9 @@ module.exports.post=function(req,res,next){
 	if(req.body.phone==""){
 		errors.push("Phone is empty");
 	}
+	console.log(errors);
+	console.log(values);
 	if(errors.length){
-		console.log(values);
 		res.render("users/create",{
 			errors:errors,
 			values:values

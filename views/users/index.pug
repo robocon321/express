@@ -7,12 +7,15 @@ block bootstrap
 		button.btn(style="background-color:#1BD1FF") Search
 	table.table
 		tr
+			th Image
 			th Name
 			th Phone
 			th Action
 
 		each val in users
 			tr
+				td
+					img(src="/"+val.path alt="No find")
 				td= val.name
 				td= val.phone
 				td

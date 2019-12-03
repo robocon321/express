@@ -23,6 +23,6 @@ module.exports.create_get=function(req,res){
 };
 
 module.exports.create_post=function(req,res){
-	db.get('users').push({id:shortid.generate(),name:req.body.name,phone:req.body.phone}).write();
+	db.get('users').push({id:shortid.generate(),name:req.body.name,phone:req.body.phone,path:'uploads/'+req.file.filename}).write();
 	res.redirect('/users');
 };

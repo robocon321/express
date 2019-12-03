@@ -10,7 +10,7 @@ var auth=require('./routes/auth.js');
 var login=require("./controllers/login.js");
 var dotenv=require('dotenv').config();
 var product=require('./routes/product.js');
-
+var tranfer=require('./routes/tranfer.js');
 
 app.use(cookieParser(process.env.DB_PASS));
 app.use(bodyParser.json());
@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use('/users',userRoute);
 app.use('/auth',auth);
 app.use('/product',product);
+app.use('/tranfer',tranfer);
 app.use(express.static('public'));
 
 app.set("view engine", 'pug');

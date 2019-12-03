@@ -5,12 +5,14 @@ block bootstrap
 		each error in errors
 			.alert.alert-danger= error
 	h1 Create User
-	form(action="/users/create" method="POST")
+	form(action="/users/create" method="POST" enctype="multipart/form-data")
 		label(for="name") Name:
 		input#name.form-control(type="text" name="name" value=values ? values[0]:"")
 		br
 		label(for="phone") Phone:
 		input#phone.form-control(type="text" name="phone" value=values ? values[1]:"")
+		br
+		input#image(type="file" name="avatar" value="Choose image")
 		br
 		button(class="btn btn-primary") Create
 	

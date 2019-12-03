@@ -14,7 +14,7 @@ block bootstrap
 						.card-body
 							h5.card-title= (page-1)*20+index+1+". "+val.name
 							p.card-text= val.description
-							a.btn.btn-primary(href='#') Add to cart
+							a.btn.btn-primary(href='/product/cart/'+val.id) Add to cart
 	.container
 		.row
 			.col.offset-sm-4
