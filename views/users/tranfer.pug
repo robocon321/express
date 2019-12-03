@@ -2,12 +2,13 @@ extends ../../public/common.pug
 
 block bootstrap
 	h1 Tranfer money
-	form(action="/tranfer" method="POST" enctype="multipart/form-data")
+	form(action="/tranfer" method="POST")
+		input(type="hidden" name="_csrf" value=csrfToken)
 		label(for="user") User:
 		input#name.form-control(type="text" name="user")
 		br
 		label(for="amount") Amount:
-		input#phone.form-control(type="amount" name="mount")
+		input#phone.form-control(type="number" name="amount")
 		br
 		button(class="btn btn-primary") Tranfer
 	
